@@ -1,8 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Image } from 'react-native'
+import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Image,Button } from 'react-native'
 import moment from 'moment'
 import numeral from 'numeral'
 import { getFilmDetailFromApi, getImageFromApi } from '../api/TMDBapi'
+import {connect} from 'react-redux'
+
 
 class FilmDetail extends React.Component {
   constructor(props) {
@@ -13,6 +15,17 @@ class FilmDetail extends React.Component {
       isLoading: true
     }
   }
+  
+  _displayNewView(){
+    console.log("LANCER LA NOUVELLE VUE")
+    this.props.navigation.navigate("NewViewSardoche")
+  }
+
+  
+  componentDidUpdate() {
+    console.log("componentDidUpdate : ")
+    console.log(this.props.favoritesFilm)
+  }
 
   componentDidMount() {
     getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
@@ -22,7 +35,7 @@ class FilmDetail extends React.Component {
       })
     })
   }
-
+ 
   _displayLoading() {
     if (this.state.isLoading) {
       return (
@@ -32,6 +45,12 @@ class FilmDetail extends React.Component {
       )
     }
   }
+
+  _toggleFavorite(){
+    const action = { type:"TOGGLE_FAVORITE",value: this.state}
+    this.props.dispatch(action)
+  }
+
 
   _displayFilm() {
     const { film } = this.state
@@ -43,6 +62,7 @@ class FilmDetail extends React.Component {
             source={{uri: getImageFromApi(film.backdrop_path)}}
           />
           <Text style={styles.title_text}>{film.title}</Text>
+          <Button title="favo" onPress={() => this._toggleFavorite()}/>
           <Text style={styles.description_text}>{film.overview}</Text>
           <Text style={styles.default_text}>Sorti le {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
           <Text style={styles.default_text}>Genre : {film.genres.map(function(genre){
@@ -56,6 +76,7 @@ class FilmDetail extends React.Component {
               return company.name;
             }).join(" / ")}
           </Text>
+          <Button title="Prier un cycle de Sardoche" onPress={() => this._displayNewView()} />
         </ScrollView>
       )
     }
@@ -69,6 +90,7 @@ class FilmDetail extends React.Component {
       </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -116,4 +138,9 @@ const styles = StyleSheet.create({
   }
 })
 
-export default FilmDetail
+const  mapStateToProps  = (state)=>{
+  return {
+    favoritesFilm : state.favoritesFilm
+  }
+}
+export default connect(mapStateToProps)(FilmDetail)
