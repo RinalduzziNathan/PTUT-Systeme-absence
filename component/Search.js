@@ -2,6 +2,7 @@ import FilmItem from './FilmItem'
 import React from 'react'
 import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator } from 'react-native'
 import { getFilmsFromApiWithSearchedText } from '../api/TMDBapi.js'
+import { connect } from 'react-redux' 
 
 class Search extends React.Component {
     
@@ -44,7 +45,8 @@ class Search extends React.Component {
         }
     }  
     constructor(props) {
-        super(props);
+        super(props)
+
         this.page = 0;
         this.totalPages = 0;
         this. searchedText=""
@@ -74,17 +76,23 @@ class Search extends React.Component {
            
            <FlatList
             data={this.state.films}
-            keyExtractor={(item) => item.id.toString()}
+            extraData = {this.props.favoritesFilm}
           
-            renderItem={({item}) => <FilmItem film={item} displayDetailForFilm={this._displayDetailForFilm} />}
-            onEndReachedThreshold={0.5}
-            onEndReached={() => {
-            if (this.page < this.totalPages)
-            { // On vérifie qu'on n'a pas atteint la fin de la pagination (totalPages) avant de charger plus d'éléments
-                this._loadFilms()
-            }
-            }}
-            />       
+            keyExtractor={(item) => item.id.toString()}
+            
+            renderItem={({item}) => 
+                <FilmItem film={item}
+                isFilmFavorite={(this.props.favoritesFilm.findIndex(film => film.id === item.id) !== -1) ? true : false}
+               
+                displayDetailForFilm={this._displayDetailForFilm} />}
+                onEndReachedThreshold={0.5}
+                onEndReached={() => {
+                if (this.page < this.totalPages)
+                { // On vérifie qu'on n'a pas atteint la fin de la pagination (totalPages) avant de charger plus d'éléments
+                    this._loadFilms()
+                }
+                }}
+                />       
         {this._displayLoading()}
         </View>
     )
@@ -117,4 +125,11 @@ main_container:{
       }
 })
 
-export default Search
+const mapStateToProps = state => {
+  return {
+    favoritesFilm: state.favoritesFilm
+  }
+}
+
+
+export default connect(mapStateToProps)(Search)

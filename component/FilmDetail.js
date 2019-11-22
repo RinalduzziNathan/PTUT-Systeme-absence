@@ -3,7 +3,8 @@ import { StyleSheet, View, Text, ActivityIndicator, ScrollView, Image,Button } f
 import moment from 'moment'
 import numeral from 'numeral'
 import { getFilmDetailFromApi, getImageFromApi } from '../api/TMDBapi'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
 class FilmDetail extends React.Component {
@@ -47,9 +48,23 @@ class FilmDetail extends React.Component {
   }
 
   _toggleFavorite(){
-    const action = { type:"TOGGLE_FAVORITE",value: this.state}
+    const action = { type:"TOGGLE_FAVORITE",value: this.state.film}
     this.props.dispatch(action)
   }
+
+  _displayFavoriteImage() {
+    var sourceImage = require('../Image/ic_favorite_border.png')
+    if (this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1) {
+      // Film dans nos favoris
+      sourceImage = require('../Image/ic_favorite.png')
+    }
+    return (
+      <Image
+        style={styles.favorite_image}
+        source={sourceImage}
+      />
+    )
+}
 
 
   _displayFilm() {
@@ -62,7 +77,10 @@ class FilmDetail extends React.Component {
             source={{uri: getImageFromApi(film.backdrop_path)}}
           />
           <Text style={styles.title_text}>{film.title}</Text>
-          <Button title="favo" onPress={() => this._toggleFavorite()}/>
+          <TouchableOpacity
+              onPress={() => this._toggleFavorite()}>
+              {this._displayFavoriteImage()}
+          </TouchableOpacity>
           <Text style={styles.description_text}>{film.overview}</Text>
           <Text style={styles.default_text}>Sorti le {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
           <Text style={styles.default_text}>Genre : {film.genres.map(function(genre){
@@ -92,6 +110,7 @@ class FilmDetail extends React.Component {
   }
 
 }
+
 
 const styles = StyleSheet.create({
   main_container: {
@@ -135,8 +154,12 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     marginTop: 5,
-  }
+  },favorite_image: {
+    width: 40,
+    height: 40
+}
 })
+
 
 const  mapStateToProps  = (state)=>{
   return {
