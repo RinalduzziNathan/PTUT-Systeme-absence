@@ -5,7 +5,7 @@ import * as Permissions from 'expo-permissions';
 
 //pour le scan
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import sendNotificationImmediately from './NotificationsLocal';
+//import sendNotificationImmediately from './NotificationsLocal';
 
 
 
@@ -58,6 +58,7 @@ class ScanCode extends React.Component{
       handleBarCodeScanned = ({ type, data }) => {
         this.setState({ scanned: true });
         //alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+        console.log(data)
         console.log("Notification.");
         
       };
