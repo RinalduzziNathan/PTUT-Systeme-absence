@@ -28,6 +28,7 @@ class FilmItem extends React.Component {
       style={styles.main_container}
       onPress={() => displayDetailForFilm(film.id)}>
        <Image
+      
           style={styles.image_film}
           source={{uri: getImageFromApi(film.poster_path)}}
         />
