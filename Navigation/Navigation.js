@@ -34,7 +34,7 @@ const SearchStackNavigator = createStackNavigator({
 
 const MoviesTabNavigator = createBottomTabNavigator({
   Search: {
-    screen: Search
+    screen: SearchStackNavigator
   },
   Scanner: {
     screen: ScanCode
