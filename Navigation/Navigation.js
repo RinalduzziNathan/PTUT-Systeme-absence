@@ -6,6 +6,8 @@ import SardComponent from '../component/SceneView'
 import FilmDetail from '../component/FilmDetail'
 import Favorites from '../component/Favorite'
 import ScanCode from '../component/ScanCode'
+import ItemCour from '../component/ItemCour'
+import SearchCour from '../component/SearchCour'
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -30,14 +32,15 @@ const SearchStackNavigator = createStackNavigator({
 
   }
 })
-
-
 const MoviesTabNavigator = createBottomTabNavigator({
   Search: {
     screen: SearchStackNavigator
   },
   Scanner: {
     screen: ScanCode
+  },
+  Cours:{
+    screen: SearchCour
   }
 })
 export default createAppContainer(MoviesTabNavigator)
