@@ -5,10 +5,33 @@ class ItemCour extends React.Component {
 
 
   render() {
+    //Objet contenant le cour (prof, matière heure)
+    const Cour = this.props.Cour
     return (
     <TouchableOpacity>
-        <Text> Debut du component ItemCour qui va contenir un cour </Text>
+     <View style={styles.main_container}>
+        
+        
+        {/*View centrée */}
+        <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
 
+          <Text> {Cour.title} </Text>
+        
+        </View>
+
+        <View style={{flex:2 }}>
+
+
+          <Text>{Cour.professeur}</Text>
+{/*           
+          <Text>{Cour.professeur}</Text>
+         */}
+        
+
+
+        </View>
+        
+      </View>
     </TouchableOpacity>
       
       
@@ -18,7 +41,10 @@ class ItemCour extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 1, height: 190, flexDirection: 'row', backgroundColor: 'yellow'
+    flex: 1, height: 90, flexDirection: 'column', backgroundColor: "#E0E0E0",
+    borderRadius: 2,
+    borderWidth: 0.3,
+    borderColor: '#6b6e6c',
   },
 
   image_film: {

@@ -103,7 +103,7 @@ class SearchCour extends React.Component {
                         data = {DATA}
                         keyExtractor={item => item.id.toString()}
                         
-                        renderItem={({item}) => <Text>{item.title}</Text>}
+                        renderItem={({item}) => <ItemCour Cour={item}/>}
                 /> 
                         
 
