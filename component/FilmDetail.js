@@ -94,7 +94,7 @@ class FilmDetail extends React.Component {
               return company.name;
             }).join(" / ")}
           </Text>
-          <Button title="Prier un cycle de Sardoche" onPress={() => this._displayNewView()} />
+          <Button title="Plus d'informations" onPress={() => this._displayNewView()} />
         </ScrollView>
       )
     }

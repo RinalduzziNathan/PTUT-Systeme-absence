@@ -17,8 +17,8 @@ const DATA = [
     },
     {
       id: '3',
-      title: 'DAC',
-      professeur:'Vincent Sauvage'
+      title: 'POO1',
+      professeur:'Benjamin Albouy-Kissi'
     },
     {
         id: '4',
@@ -30,6 +30,26 @@ const DATA = [
         title: 'POO3',
         professeur: 'Antoine Vacavant'
       },
+      {
+        id: '6',
+        title: 'POO1',
+        professeur:'Benjamin Albouy-Kissi'
+      },
+      {
+        id: '7',
+        title: 'DAC',
+        professeur:'Vincent Sauvage'
+      },
+      {
+        id: '8',
+        title: 'Anglais',
+        professeur: 'Pascale Pothée'
+      },
+      {
+        id: '9',
+        title: 'Architecture',
+        professeur: 'Pierre-Yves Bischoff'
+      }
   ];
 
 

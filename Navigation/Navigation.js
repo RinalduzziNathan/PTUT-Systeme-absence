@@ -21,13 +21,13 @@ const SearchStackNavigator = createStackNavigator({
   FilmDetail:{
     screen:FilmDetail,
     navigationOptions: {
-      title: "détaille + sardoche"
+      title: "détaille du film"
     }
   },
   NewViewSardoche:{
     screen: SardComponent,
     navigationOptions:{
-      title: "PrionsLeCycle"
+      title: "Plus d'informations"
     }
 
   }
