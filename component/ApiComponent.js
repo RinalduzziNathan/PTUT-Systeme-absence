@@ -6,6 +6,15 @@ import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator } fr
 class ApiDialog extends React.Component {
 
 
+    constructor(props){
+        super(props)
+        this.messageToPost=""
+    }
+
+    swapTest(_text){
+        this.messageToPost = _text;
+    }
+
     _TestApi(){
         console.log('TEST DE L API EN COUR')
          ApiPTUT(9).then(data => {
@@ -15,8 +24,8 @@ class ApiDialog extends React.Component {
       }
       _TestPostApi(){
         console.log('TEST DE L API POST EN COUR')
-        PostApiPTUT()
-        
+        PostApiPTUT(this.messageToPost)
+        this.messageToPost=""
       }
       
     render(){
@@ -24,9 +33,14 @@ class ApiDialog extends React.Component {
 
 
             <View>
-            <Button title = 'Simon API ' onPress={()=> this._TestApi()}></Button>     
-                 
-            <Button title = 'Simon API POST ' onPress={()=> this._TestPostApi()}></Button>    
+            <Button title = 'Recuperer les données de l api ' onPress={()=> this._TestApi()}></Button>     
+            <TextInput
+            placeholder='Message à envoyer'
+            onChangeText={(messageToPost)=> this.swapTest(messageToPost)}
+            onSubmitEditing={() => this._TestPostApi()}
+            >
+            </TextInput>   
+            
             </View>
         )
     }
