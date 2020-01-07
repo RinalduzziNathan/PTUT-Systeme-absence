@@ -9,6 +9,7 @@ import ScanCode from '../component/ScanCode'
 import ItemCour from '../component/ItemCour'
 import SearchCour from '../component/SearchCour'
 import ApiDialog from '../component/ApiComponent'
+import Connexion from '../component/Connexion'
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -47,7 +48,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
     screen: SearchCour
   },
   Anais:{
-    screen:SearchCour
+    screen: Connexion
   }
 })
 export default createAppContainer(MoviesTabNavigator)
