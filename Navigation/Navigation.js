@@ -8,6 +8,7 @@ import Favorites from '../component/Favorite'
 import ScanCode from '../component/ScanCode'
 import ItemCour from '../component/ItemCour'
 import SearchCour from '../component/SearchCour'
+import ApiDialog from '../component/ApiComponent'
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -33,6 +34,8 @@ const SearchStackNavigator = createStackNavigator({
 
   }
 })
+
+
 const MoviesTabNavigator = createBottomTabNavigator({
   Search: {
     screen: SearchStackNavigator
@@ -42,6 +45,9 @@ const MoviesTabNavigator = createBottomTabNavigator({
   },
   Cours:{
     screen: SearchCour
+  },
+  Anais:{
+    screen:SearchCour
   }
 })
 export default createAppContainer(MoviesTabNavigator)

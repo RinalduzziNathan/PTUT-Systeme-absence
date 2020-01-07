@@ -1,4 +1,4 @@
-import FilmItem from './FilmItem'
+
 import React from 'react'
 import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator } from 'react-native'
 import {ApiPTUT,PostApiPTUT} from '../api/TMDBapi.js'
@@ -92,19 +92,12 @@ class SearchCour extends React.Component {
         this.searchedText = text
     }
    
-    _TestApi(){
-      console.log('TEST DE L API EN COUR')
-       ApiPTUT(9).then(data => {
-      console.log(data)
-      })
       
-    }
-    _TestPostApi(){
-      console.log('TEST DE L API POST EN COUR')
-      PostApiPTUT()
-      
-    }
-    
+  // _displayNewView(){
+  //   console.log("LANCER LA NOUVELLE VUE")
+  //   this.props.navigation.navigate("Api")
+  // }
+
 
     render() {
 
@@ -124,9 +117,8 @@ class SearchCour extends React.Component {
             <Button style={styles.textinput} title='Rechercher'  onPress={() => this._searchFilms() }/>
                 */}
                     
-                <Button title = 'Simon API ' onPress={()=> this._TestApi()}></Button>     
-                 
-                <Button title = 'Simon API POST ' onPress={()=> this._TestPostApi()}></Button>     
+                {/* <Button title = 'Simon API ' onPress={()=> this._displayNewView()}></Button>     
+                    */}
                 <Text style={{color: "white"}} > Liste des cours :  </Text>
                     
             
