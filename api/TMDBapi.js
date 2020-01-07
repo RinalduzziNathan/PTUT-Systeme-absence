@@ -8,6 +8,35 @@ export function getFilmsFromApiWithSearchedText (text, page) {
 }
 
 
+
+export function ApiPTUT(id) {
+  const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests'
+  return fetch(urlTest)
+    .then((response) => response.json())
+    .catch((error) => console.error(error))
+    
+}
+
+export function PostApiPTUT(id) {
+  const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests'
+
+ 
+  fetch(urlTest, {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    string: 'JE suis un test depuis React Native',
+    
+  }),
+});
+}
+
+
 export function getImageFromApi (name) {
     return 'https://image.tmdb.org/t/p/w300' + name
   }

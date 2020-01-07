@@ -27,6 +27,7 @@ const SearchStackNavigator = createStackNavigator({
   NewViewSardoche:{
     screen: SardComponent,
     navigationOptions:{
+
       title: "Plus d'informations"
     }
 
