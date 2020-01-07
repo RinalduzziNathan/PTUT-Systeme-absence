@@ -93,10 +93,10 @@ class SearchCour extends React.Component {
     }
    
       
-  // _displayNewView(){
-  //   console.log("LANCER LA NOUVELLE VUE")
-  //   this.props.navigation.navigate("Api")
-  // }
+  _displayNewView(){
+    console.log("LANCER LA NOUVELLE VUE")
+    this.props.navigation.navigate("Api")
+  }
 
 
     render() {
@@ -117,8 +117,8 @@ class SearchCour extends React.Component {
             <Button style={styles.textinput} title='Rechercher'  onPress={() => this._searchFilms() }/>
                 */}
                     
-                {/* <Button title = 'Simon API ' onPress={()=> this._displayNewView()}></Button>     
-                    */}
+                <Button title = 'Tester api' onPress={()=> this._displayNewView()}></Button>     
+                   
                 <Text style={{color: "white"}} > Liste des cours :  </Text>
                     
             
