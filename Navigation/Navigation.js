@@ -35,6 +35,23 @@ const SearchStackNavigator = createStackNavigator({
   }
 })
 
+const StackNavigatorCoursApi = createStackNavigator({
+
+  SearchCour: {
+    screen: SearchCour,
+    navigationOptions: {
+      title: "Cours"
+    }
+  },
+
+  Api:{
+    screen:ApiDialog,
+    navigationOptions:{
+      title: "Api"
+    }
+
+  }
+})
 
 const MoviesTabNavigator = createBottomTabNavigator({
   Search: {
@@ -44,10 +61,10 @@ const MoviesTabNavigator = createBottomTabNavigator({
     screen: ScanCode
   },
   Cours:{
-    screen: SearchCour
+    screen: StackNavigatorCoursApi
   },
   Anais:{
-    screen:SearchCour
+    screen:ScanCode
   }
 })
 export default createAppContainer(MoviesTabNavigator)

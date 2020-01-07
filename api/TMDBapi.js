@@ -30,7 +30,7 @@ export function PostApiPTUT(id) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    string: 'JE suis un test depuis React Native',
+    string: 'Nouv test depuis react',
     
   }),
 });
