@@ -18,7 +18,7 @@ export function ApiPTUT(id) {
     
 }
 
-export function PostApiPTUT(id) {
+export function PostApiPTUT(Message) {
   const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
   const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests'
 
@@ -30,7 +30,7 @@ export function PostApiPTUT(id) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    string: 'Nouv test depuis react',
+    string: Message,
     
   }),
 });
