@@ -6,6 +6,7 @@ import * as Permissions from 'expo-permissions';
 //pour le scan
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Notifications} from "expo";
+import { ApiAuth } from './Api';
 
 
 
@@ -20,7 +21,6 @@ class ScanCode extends React.Component{
 
     _displayNewView = () => {
       console.log("Vue autentification")
-      console.log(this);
       this.navigate.navigate("App")
     }
 
@@ -118,8 +118,18 @@ class ScanCode extends React.Component{
       handleBarCodeScanned = ({ type, data }) => {
         this.sendNotificationImmediately();
         this.setState({ scanned: true });
-        this._displayNewView();
         
+        console.log(ApiAuth.Token + "This is the token")
+        if(data.includes("tok"))
+        {
+          this._displayNewView();
+          ApiAuth.StoreToken(data)
+          console.log("Un Token a été scanné")
+          ApiAuth.GetUserInfo()
+        }else
+        {
+          console.log("Vous n'avez pas scanné de token")
+        }
       };
 }
 

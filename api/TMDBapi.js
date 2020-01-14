@@ -20,12 +20,7 @@ export function ApiPTUT(id) {
 }
 
 export function PostApiPTUT(Message) {
-  const url = 'http://ptutgestionabsences.herokuapp.com/api/login_check'
   const urlTest = 'http://ptutgestionabsences.herokuapp.com/apilogin'
-
-  role = [
-    "ROLE_ADMIN"
-  ]
 
   fetch(urlTest, {
   method: 'POST',

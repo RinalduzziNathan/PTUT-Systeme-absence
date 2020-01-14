@@ -11,7 +11,7 @@ class Connexion extends React.Component{
 
     _displayNewView = () => {
         console.log("Vue autentification")
-        console.log(this);
+        
         this.navigate.navigate("App")
    }
     
