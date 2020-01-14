@@ -3,6 +3,17 @@ import React from 'react';
 
 class Connexion extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.navigate = props.navigation;
+    }
+
+    _displayNewView = () => {
+        console.log("Vue autentification")
+        console.log(this);
+        this.navigate.navigate("App")
+   }
+    
     render(){
         return(
             <View style={styles.main_container}>
@@ -12,7 +23,7 @@ class Connexion extends React.Component{
                 <View style={styles.container, styles.input_button_container}>
                     <TextInput style = {styles.textinput} placeholder='Identifiant' placeholderTextColor="#FFFFFF" color='#FFFFFF'/>
                     <TextInput style = {styles.textinput} placeholder='Mot De Passe' placeholderTextColor="#FFFFFF" color='#FFFFFF' />
-                    <TouchableOpacity style={styles.buttonStyle} activeOpacity = { .5 }>
+                    <TouchableOpacity style={styles.buttonStyle} activeOpacity = { .5 }  onPress={this._displayNewView}>
                         <Text style={styles.buttonText}>CONNEXION</Text>
                     </TouchableOpacity>
                 </View>
@@ -41,18 +52,18 @@ const styles = StyleSheet.create({
       backgroundColor: '#0C5E7F'
     },
     image:{
-        width: 150,
-        height: 150,
+        width: 100,
+        height: 100,
         marginTop: 40
     },
     container: {
         justifyContent: 'center'
     },
     input_button_container: {
-        flex:3
+        flex:4
     },
     logo_container: {
-        flex:2
+        flex:1
     },
     buttonStyle:{
         marginLeft:5,
