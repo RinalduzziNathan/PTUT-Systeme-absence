@@ -10,31 +10,16 @@ class ItemCour extends React.Component {
     return (
     <TouchableOpacity>
      <View style={styles.main_container}>
-        
-        
-        {/*View centrée */}
-        <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-
-          <Text> {Cour.title} </Text>
-        
+        <View style={{justifyContent:'center', alignItems: 'center'}}>
+          <Text style={{fontSize:10, fontWeight: "bold"}}>{Cour.date}</Text>
         </View>
 
-        <View style={{flex:2 }}>
-
-
-          <Text>{Cour.professeur}</Text>
-{/*           
-          <Text>{Cour.professeur}</Text>
-         */}
-        
-
-
+        <View style={styles.cours_style}>
+        <Text>{Cour.title}</Text><Text style={{marginTop:9}}>{Cour.professeur}</Text>
         </View>
         
       </View>
-    </TouchableOpacity>
-      
-      
+    </TouchableOpacity>  
     )
   }
 }
@@ -47,37 +32,11 @@ const styles = StyleSheet.create({
     borderColor: '#6b6e6c',
   },
 
-  image_film: {
-    flex: 1,  backgroundColor: 'grey'
-  },
-  layer_text: {
-    flex: 2, backgroundColor: 'white',
-  },
-  container_Title_Vote: {
-      flex:3,flexDirection: 'row',backgroundColor:'white',
-  }
-  ,
-  title_text: {
-    flex: 2,  fontWeight: 'bold',
-    fontSize: 20,
-  },
-  Vote: {
-    flex: 1,  fontWeight: 'bold',
-    fontSize: 26,
-    color: '#666666'
-  },
-  Description: {
-    flex: 7,flexWrap: 'wrap',
-    fontStyle: 'italic',
-    fontSize:20,
-    color: '#666666'
-  },
-  SortiView: {
-      flex : 1,
-  },
-  Sorti: {
-    textAlign: 'right',
-    fontSize: 13
+  cours_style:{
+    marginTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: 10
   }
 })
 
