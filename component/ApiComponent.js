@@ -22,11 +22,11 @@ class ApiDialog extends React.Component {
         })
         
       }
-      _TestPostApi(){
+    _TestPostApi(){
         console.log('TEST DE L API POST EN COUR')
         PostApiPTUT(this.messageToPost)
         this.messageToPost=""
-      }
+    }
       
     render(){
         return (
@@ -34,12 +34,14 @@ class ApiDialog extends React.Component {
 
             <View>
             <Button title = 'Recuperer les données de l api ' onPress={()=> this._TestApi()}></Button>     
+             
             <TextInput
             placeholder='Message à envoyer'
             onChangeText={(messageToPost)=> this.swapTest(messageToPost)}
             onSubmitEditing={() => this._TestPostApi()}
             >
             </TextInput>   
+            <Button title = 'POST API SIMON  ' onPress={()=> this._TestPostApi()}></Button> 
             
             </View>
         )

@@ -10,19 +10,23 @@ export function getFilmsFromApiWithSearchedText (text, page) {
 
 
 export function ApiPTUT(id) {
-  const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
-  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests'
+  const url = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests?page=1'
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/testjson'
+
   return fetch(urlTest)
-    .then((response) => response.json())
+    .then((response) => console.log(response))
     .catch((error) => console.error(error))
     
 }
 
 export function PostApiPTUT(Message) {
-  const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
-  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests'
+  const url = 'http://ptutgestionabsences.herokuapp.com/api/login_check'
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/apilogin'
 
- 
+  role = [
+    "ROLE_ADMIN"
+  ]
+
   fetch(urlTest, {
   method: 'POST',
   headers: {
@@ -30,10 +34,11 @@ export function PostApiPTUT(Message) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    string: Message,
+    username:"krgarnier",
+    roles:role
     
-  }),
-});
+  })
+}).then((response) => console.log(response));
 }
 
 
