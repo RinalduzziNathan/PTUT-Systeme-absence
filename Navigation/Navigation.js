@@ -1,4 +1,4 @@
-import { createAppContainer } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Search from '../component/Search'
@@ -54,6 +54,7 @@ const StackNavigatorCoursApi = createStackNavigator({
   }
 })
 
+
 const MoviesTabNavigator = createBottomTabNavigator({
   Search: {
     screen: SearchStackNavigator
@@ -63,9 +64,17 @@ const MoviesTabNavigator = createBottomTabNavigator({
   },
   Cours:{
     screen: StackNavigatorCoursApi
-  },
-  Anais:{
-    screen: Connexion
   }
 })
-export default createAppContainer(MoviesTabNavigator)
+
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+    App: MoviesTabNavigator,
+    Auth: Connexion,
+    },
+    {
+      initialRouteName: 'Auth',
+    }
+  )
+);
