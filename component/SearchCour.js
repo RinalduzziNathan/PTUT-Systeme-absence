@@ -1,8 +1,9 @@
 
 import React from 'react'
-import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator } from 'react-native'
+import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator, Image} from 'react-native'
 import {ApiPTUT,PostApiPTUT} from '../api/TMDBapi.js'
 import ItemCour from './ItemCour'
+import { LinearGradient } from 'expo-linear-gradient'
 
 //Array de cours static en attendant l'api
 const DATA = [
@@ -96,16 +97,19 @@ class SearchCour extends React.Component {
       return (
         <View style={{flex:1 ,flexDirection:'column'}}>    
 
-            <View style={{backgroundColor: "#0C6851", flex :1,justifyContent: 'center', alignItems: 'center'}}>    
-              <Text style={{color: "white", fontSize: 30,}} > Liste des cours : </Text>
+            <View style={{backgroundColor: "#316B7F", flex :1,justifyContent: 'center', alignItems: 'center', flexDirection: 'row', opacity: "0.9"}}>    
+              <Image style={styles.image} source={require('../Image/logo-uca-.png')} />
+              <Text style={{color: "white", fontSize: 20, paddingLeft: 20}} > Liste des cours </Text>
             </View>        
             
-            <View style={{backgroundColor: 'white', flex:5}}>
-              <FlatList
-                data = {DATA}
-                keyExtractor={item => item.id.toString()}
-                renderItem={({item}) => <ItemCour Cour={item}/>}
-              /> 
+            <View style={{backgroundColor: 'white', flex:10}} >
+              <LinearGradient colors={['#316B7F', '#64D8D3']}> 
+                <FlatList
+                  data = {DATA}
+                  keyExtractor={item => item.id.toString()}
+                  renderItem={({item}) => <ItemCour Cour={item}/>}
+                /> 
+              </LinearGradient>
             </View>
         </View>
       )
@@ -133,7 +137,12 @@ const styles = StyleSheet.create({
         bottom: 0,
         alignItems: 'center',
         justifyContent: 'center'
-      }
+    },
+
+    image:{
+      width: 40,
+      height: 40
+    }
 })
 
 export default SearchCour

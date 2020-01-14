@@ -6,21 +6,16 @@ import * as Permissions from 'expo-permissions';
 //pour le scan
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { Notifications} from "expo";
-import { ApiAuth } from './Api';
+
+import Scanner from './Scanner';
 
 
 
-class ScanCode extends React.Component{
+class ScanCode extends Scanner{
 
 //SCAN CODE POUR LA CONNEXION
 
-    constructor(props){
-      super(props);
-      this.navigate = props.navigation;
-    }
-
     _displayNewView = () => {
-      console.log("Vue autentification")
       this.navigate.navigate("App")
     }
 
@@ -29,45 +24,45 @@ class ScanCode extends React.Component{
         scanned: false,
       };
     
-      async componentDidMount() {
-        this.getPermissionsAsync();
-      }
+      // async componentDidMount() {
+      //   this.getPermissionsAsync();
+      // }
     
-      getPermissionsAsync = async () => {
-        const { status } = await Permissions.askAsync(Permissions.CAMERA);
-        this.setState({ hasCameraPermission: status === 'granted' });
-      };
+      // getPermissionsAsync = async () => {
+      //   const { status } = await Permissions.askAsync(Permissions.CAMERA);
+      //   this.setState({ hasCameraPermission: status === 'granted' });
+      // };
       
     
-      render() {
-        const { hasCameraPermission, scanned } = this.state;
+      // render() {
+      //   const { hasCameraPermission, scanned } = this.state;
         
-        if (hasCameraPermission === null) {
-          return <Text>Requesting for camera permission</Text>;
-        }
-        if (hasCameraPermission === false) {
-          return <Text>No access to camera</Text>;
-        }
-        return (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-            }}>
-            <BarCodeScanner
-              onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
-              style={StyleSheet.absoluteFillObject}
-            />
+      //   if (hasCameraPermission === null) {
+      //     return <Text>Requesting for camera permission</Text>;
+      //   }
+      //   if (hasCameraPermission === false) {
+      //     return <Text>No access to camera</Text>;
+      //   }
+      //   return (
+      //     <View
+      //       style={{
+      //         flex: 1,
+      //         flexDirection: 'column',
+      //         justifyContent: 'flex-end',
+      //       }}>
+      //       <BarCodeScanner
+      //         onBarCodeScanned={scanned ? undefined : this.handleBarCodeScanned}
+      //         style={StyleSheet.absoluteFillObject}
+      //       />
     
-            {scanned && (
-              <Button title={'Tap to Scan Again'} onPress={() => this.setState({ scanned: false })} />
-            )}
-          </View>
-        );
-      }
+      //       {scanned && (
+      //         <Button title={'Tap to Scan Again'} onPress={() => this.setState({ scanned: false })} />
+      //       )}
+      //     </View>
+      //   );
+      // }
 
-      //NOTIFICATION IMEDIATE
+      //NOTIFICATION IMEDIATE "BIEN CONNECTE"
       sendNotificationImmediately = async () => {
 
 
@@ -89,47 +84,24 @@ class ScanCode extends React.Component{
       
         });
       
-        console.log(notificationId); // can be saved in AsyncStorage or send to server
-      
+        console.log(notificationId); 
       }
-
-      // scheduleLocalNotification = async () =>{
-
-      //   console.log("ahhhhh")
-      //   let notificationId = await Notifications.scheduleLocalNotificationAsync({
-
-      //     localNotification: {
-      
-      //       title: "Message de votre application",
-        
-      //       body: "Vous venez de scanner votre QRCode.",
-        
-      //       ios: {
-      //         _displayInForeground: true,
-      //         sound: true
-      //       }
-
-      //     },
-
-      //     time: addSeconds((Date.now()),5),
-      //   });
-      // }
     
       handleBarCodeScanned = ({ type, data }) => {
         this.sendNotificationImmediately();
         this.setState({ scanned: true });
         
-        console.log(ApiAuth.Token + "This is the token")
-        if(data.includes("tok"))
-        {
-          this._displayNewView();
-          ApiAuth.StoreToken(data)
-          console.log("Un Token a été scanné")
-          ApiAuth.GetUserInfo()
-        }else
-        {
-          console.log("Vous n'avez pas scanné de token")
-        }
+        // console.log(ApiAuth.Token + "This is the token")
+        // if(data.includes("tok"))
+        // {
+        //   this._displayNewView();
+        //   ApiAuth.StoreToken(data)
+        //   console.log("Un Token a été scanné")
+        //   ApiAuth.GetUserInfo()
+        // }else
+        // {
+        //   console.log("Vous n'avez pas scanné de token")
+        // }
       };
 }
 

@@ -1,5 +1,5 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator, HeaderTitle } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Search from '../component/Search'
 import SardComponent from '../component/SceneView'
@@ -41,17 +41,15 @@ const StackNavigatorCoursApi = createStackNavigator({
   SearchCour: {
     screen: SearchCour,
     navigationOptions: {
-      title: "Bienvenue ! "
+      title: "UCA Gestion des absences ",
+      headerTitleStyle:{
+        color: "white"
+      },
+      headerStyle:{
+        backgroundColor:"#316B7F"
+      }
     }
   }
-
-  // Api:{
-  //   screen:ApiDialog,
-  //   navigationOptions:{
-  //     title: "Api"
-  //   }
-
-  // }
 })
 
 
