@@ -5,7 +5,7 @@ import Search from '../component/Search'
 import SardComponent from '../component/SceneView'
 import FilmDetail from '../component/FilmDetail'
 import Favorites from '../component/Favorite'
-import ScanCode from '../component/ScanCode'
+import ScanCodeAuthentification from '../component/ScanCodeAuthentification'
 import ItemCour from '../component/ItemCour'
 import SearchCour from '../component/SearchCour'
 import ApiDialog from '../component/ApiComponent'
@@ -58,7 +58,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
     screen: StackNavigatorCoursApi
   },
   Scanner: {
-    screen: ScanCode
+    screen: ScanCodeAuthentification
   }
 })
 
@@ -66,7 +66,7 @@ export default createAppContainer(
   createSwitchNavigator(
     {
     App: MoviesTabNavigator,
-    Auth: ScanCode,
+    Auth: ScanCodeAuthentification,
     },
     {
       initialRouteName: 'Auth',

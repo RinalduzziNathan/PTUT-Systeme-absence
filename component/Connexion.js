@@ -1,6 +1,6 @@
 import { TextInput, View, StyleSheet, Button, Image, TouchableOpacity, Text} from "react-native";
 import React from 'react';
-import ScanCode from "./ScanCode";
+import ScanCodeAuthentification from "./ScanCodeAuthentification";
 
 class Connexion extends React.Component{
 
@@ -29,7 +29,7 @@ class Connexion extends React.Component{
                     </TouchableOpacity>
                 </View> */}
                 <View>
-                    <ScanCode style={styles.scan}/>
+                    <ScanCodeAuthentification style={styles.scan}/>
                 </View>
             </View>
         )
