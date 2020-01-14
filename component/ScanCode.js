@@ -5,12 +5,24 @@ import * as Permissions from 'expo-permissions';
 
 //pour le scan
 import { BarCodeScanner } from 'expo-barcode-scanner';
-//import sendNotificationImmediately from './NotificationsLocal';
+import { Notifications} from "expo";
 
 
 
 class ScanCode extends React.Component{
 
+//SCAN CODE POUR LA CONNEXION
+
+    constructor(props){
+      super(props);
+      this.navigate = props.navigation;
+    }
+
+    _displayNewView = () => {
+      console.log("Vue autentification")
+      console.log(this);
+      this.navigate.navigate("App")
+    }
 
     state = {
         hasCameraPermission: null,
@@ -29,7 +41,7 @@ class ScanCode extends React.Component{
     
       render() {
         const { hasCameraPermission, scanned } = this.state;
-    
+        
         if (hasCameraPermission === null) {
           return <Text>Requesting for camera permission</Text>;
         }
@@ -54,12 +66,59 @@ class ScanCode extends React.Component{
           </View>
         );
       }
+
+      //NOTIFICATION IMEDIATE
+      sendNotificationImmediately = async () => {
+
+
+        console.log("on entre dans la function")
+        let notificationId = await Notifications.presentLocalNotificationAsync({
+      
+          title: "UCA Absence",
+      
+          body: "Vous êtes bien connecté",
+      
+          ios: {
+            _displayInForeground: true,
+            sound: true
+          },
+      
+          android: {
+            channelId: 1
+          }
+      
+        });
+      
+        console.log(notificationId); // can be saved in AsyncStorage or send to server
+      
+      }
+
+      // scheduleLocalNotification = async () =>{
+
+      //   console.log("ahhhhh")
+      //   let notificationId = await Notifications.scheduleLocalNotificationAsync({
+
+      //     localNotification: {
+      
+      //       title: "Message de votre application",
+        
+      //       body: "Vous venez de scanner votre QRCode.",
+        
+      //       ios: {
+      //         _displayInForeground: true,
+      //         sound: true
+      //       }
+
+      //     },
+
+      //     time: addSeconds((Date.now()),5),
+      //   });
+      // }
     
       handleBarCodeScanned = ({ type, data }) => {
+        this.sendNotificationImmediately();
         this.setState({ scanned: true });
-        //alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-        console.log(data)
-        console.log("Notification.");
+        this._displayNewView();
         
       };
 }

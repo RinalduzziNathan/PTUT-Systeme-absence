@@ -41,29 +41,26 @@ const StackNavigatorCoursApi = createStackNavigator({
   SearchCour: {
     screen: SearchCour,
     navigationOptions: {
-      title: "Cours"
+      title: "Bienvenue ! "
     }
-  },
-
-  Api:{
-    screen:ApiDialog,
-    navigationOptions:{
-      title: "Api"
-    }
-
   }
+
+  // Api:{
+  //   screen:ApiDialog,
+  //   navigationOptions:{
+  //     title: "Api"
+  //   }
+
+  // }
 })
 
 
 const MoviesTabNavigator = createBottomTabNavigator({
-  Search: {
-    screen: SearchStackNavigator
+  Cours:{
+    screen: StackNavigatorCoursApi
   },
   Scanner: {
     screen: ScanCode
-  },
-  Cours:{
-    screen: StackNavigatorCoursApi
   }
 })
 
@@ -71,7 +68,7 @@ export default createAppContainer(
   createSwitchNavigator(
     {
     App: MoviesTabNavigator,
-    Auth: Connexion,
+    Auth: ScanCode,
     },
     {
       initialRouteName: 'Auth',
