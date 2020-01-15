@@ -2,7 +2,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator, HeaderTitle } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import Search from '../component/Search'
-import SardComponent from '../component/SceneView'
 import FilmDetail from '../component/FilmDetail'
 import Favorites from '../component/Favorite'
 import ScanCodeAuthentification from '../component/ScanCodeAuthentification'
@@ -10,6 +9,8 @@ import ItemCour from '../component/ItemCour'
 import SearchCour from '../component/SearchCour'
 import ApiDialog from '../component/ApiComponent'
 import Connexion from '../component/Connexion'
+import Scanner from '../component/Scanner'
+import AutoAutenthification from '../component/AutoAuthentification'
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -26,14 +27,6 @@ const SearchStackNavigator = createStackNavigator({
       title: "détaille du film"
     }
   },
-  NewViewSardoche:{
-    screen: SardComponent,
-    navigationOptions:{
-
-      title: "Plus d'informations"
-    }
-
-  }
 })
 
 const StackNavigatorCoursApi = createStackNavigator({
@@ -58,7 +51,7 @@ const MoviesTabNavigator = createBottomTabNavigator({
     screen: StackNavigatorCoursApi
   },
   Scanner: {
-    screen: ScanCodeAuthentification
+    screen: Scanner
   }
 })
 
@@ -67,9 +60,10 @@ export default createAppContainer(
     {
     App: MoviesTabNavigator,
     Auth: ScanCodeAuthentification,
+    StorageCheck : AutoAutenthification
     },
     {
-      initialRouteName: 'Auth',
+      initialRouteName: 'StorageCheck',
     }
   )
 );

@@ -1,4 +1,5 @@
-//this file contains function and class used for networkings between the mobile app & the server
+
+//this file contains function and class used for networkings between the mobile app & the server + save the token
 
 //used to get the course of the user, the param is used to determine whiche grouo you have to fetch data
 export function GetClassroomWithId(GroupId) 
@@ -35,8 +36,8 @@ export class ApiAuth{
             body: JSON.stringify({
               token:this.Token              
             })
-          }).then((response) => console.log(response));
-          console.log(this.Token+ "TOKEN !!!")
+          }).then((response) => console.log("bjr"));
+          console.log(this.Token+ " TOKEN !!!")
 
     }
 
@@ -45,5 +46,4 @@ export class ApiAuth{
     {
         this.Token=Token
     }
-
 }

@@ -13,7 +13,6 @@ class Scanner extends React.Component{
 
     constructor(props){
         super(props);
-        this.navigate = props.navigation;
       }
       state = {
           hasCameraPermission: null,

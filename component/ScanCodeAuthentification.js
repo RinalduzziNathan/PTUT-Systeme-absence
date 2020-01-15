@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button,AsyncStorage } from 'react-native';
 
 import * as Permissions from 'expo-permissions';
 
@@ -16,6 +16,11 @@ class ScanCodeAuthentification extends Scanner{
 
 //SCAN CODE POUR LA CONNEXION
 
+
+    constructor(props) {
+      super(props)
+    }
+     
 
     _displayNewView = () => {
       this.navigate.navigate("App")
@@ -60,7 +65,7 @@ class ScanCodeAuthentification extends Scanner{
 
         console.log("on entre dans la function")
         let notificationId = await Notifications.presentLocalNotificationAsync({
-      
+          
           title: "UCA Absence",
       
           body: "Erreur de connexion, réessayez.",
@@ -89,7 +94,8 @@ class ScanCodeAuthentification extends Scanner{
           this.sendNotificationImmediately();
           this._displayNewView();
           ApiAuth.StoreToken(data)
-          console.log("Un Token a été scanné")
+          this.save(data)
+          console.log("Un Token a été scanné et stocké")
           ApiAuth.GetUserInfo()
         }else
         {
@@ -97,6 +103,15 @@ class ScanCodeAuthentification extends Scanner{
           console.log("Vous n'avez pas scanné de token")
         }
       };
+      save = async (data) => {
+        try {
+          await AsyncStorage.setItem(STORAGE_KEY, data)
+          alert('Votre authentification est sauvegardée')
+        } catch (e) {
+          alert('Votre anthentification a crash')
+        }
+      }
+
 }
 
 export default ScanCodeAuthentification;
