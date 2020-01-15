@@ -11,6 +11,8 @@ import Scanner from './Scanner';
 import { ApiAuth } from './Api';
 
 
+const STORAGE_KEY ='@save_token'
+
 
 class ScanCodeAuthentification extends Scanner{
 
@@ -19,6 +21,9 @@ class ScanCodeAuthentification extends Scanner{
 
     constructor(props) {
       super(props)
+      
+        
+      this.navigate = props.navigation
     }
      
 
@@ -95,7 +100,6 @@ class ScanCodeAuthentification extends Scanner{
           this._displayNewView();
           ApiAuth.StoreToken(data)
           this.save(data)
-          console.log("Un Token a été scanné et stocké")
           ApiAuth.GetUserInfo()
         }else
         {
@@ -106,8 +110,9 @@ class ScanCodeAuthentification extends Scanner{
       save = async (data) => {
         try {
           await AsyncStorage.setItem(STORAGE_KEY, data)
-          alert('Votre authentification est sauvegardée')
+          alert('Votre authentification est sauvegardée !')
         } catch (e) {
+          console.log(e)
           alert('Votre anthentification a crash')
         }
       }
