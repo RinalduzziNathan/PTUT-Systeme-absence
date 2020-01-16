@@ -4,12 +4,22 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 class ItemCour extends React.Component {
 
+  onPress = () => {
+
+    console.log(" c'est les props " +this.props)
+
+    // this.navigate.navigate("ScannerCour")
+  }
+
 
   render() {
     //Objet contenant le cour (prof, matière heure)
     const Cours = this.props.Cour
+    const { displayNewView } = this.props.displayNewView
+
     return (
-    <TouchableOpacity>
+     <TouchableOpacity onPress={() =>this.props.displayNewView()} >
+    
      <View style={styles.main_container}>
 
         <View style={{flexDirection:"column"}}>

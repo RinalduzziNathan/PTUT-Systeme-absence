@@ -42,6 +42,12 @@ const StackNavigatorCoursApi = createStackNavigator({
         backgroundColor:"#316B7F"
       }
     }
+  },
+  ScannerCour:{
+    screen: Scanner,
+    navigationOptions: {
+      title: "ALED"
+    }
   }
 })
 

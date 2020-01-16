@@ -78,6 +78,8 @@ class SearchCour extends React.Component {
         this.page = 0;
         this.totalPages = 0;
         this. searchedText=""
+        this.passage= "JE_PASSE_A_LA_LISTE"  
+    
     
     }
 
@@ -86,17 +88,20 @@ class SearchCour extends React.Component {
     }
    
       
-    _displayNewView(){
+    _displayNewView = () =>{
       console.log("LANCER LA NOUVELLE VUE")
-      this.props.navigation.navigate("Api")
+      this.props.navigation.navigate("ScannerCour")
     }
 
 
     render() {
 
+      
+      const {displayNewView, data } = this.props
+     
       return (
         <View style={{flex:1 ,flexDirection:'column'}}>    
-
+            <Button title = 'Tester api' onPress={()=> this._displayNewView()}></Button>     
             <View style={{backgroundColor: "#316B7F", flex :1,justifyContent: 'center', alignItems: 'center', flexDirection: 'row', opacity: "0.9"}}>    
               <Image style={styles.image} source={require('../Image/logo-uca-.png')} />
               <Text style={{color: "white", fontSize: 20, paddingLeft: 20}} > Liste des cours </Text>
@@ -104,10 +109,15 @@ class SearchCour extends React.Component {
             
             <View style={{backgroundColor: 'white', flex:10}} >
               <LinearGradient colors={['#316B7F', '#64D8D3']}> 
+            
                 <FlatList
                   data = {DATA}
                   keyExtractor={item => item.id.toString()}
-                  renderItem={({item}) => <ItemCour Cour={item}/>}
+                  renderItem={({item}) => 
+                  <ItemCour Cour={item}
+                  displayNewView={this._displayNewView}
+                  Passage={this.sayHello}
+                  />}
                 /> 
               </LinearGradient>
             </View>
