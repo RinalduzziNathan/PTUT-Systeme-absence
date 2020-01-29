@@ -11,6 +11,7 @@ import ApiDialog from '../component/ApiComponent'
 import Connexion from '../component/Connexion'
 import Scanner from '../component/Scanner'
 import AutoAutenthification from '../component/AutoAuthentification'
+import Profil from '../component/Profil'
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -42,7 +43,10 @@ const StackNavigatorCoursApi = createStackNavigator({
         backgroundColor:"#316B7F"
       }
     }
-  }
+  },
+  ScannerCours:{
+    screen: Scanner
+  },
 })
 
 
@@ -52,6 +56,9 @@ const MoviesTabNavigator = createBottomTabNavigator({
   },
   Scanner: {
     screen: Scanner
+  },
+  Profil:{
+    screen: Profil
   }
 })
 

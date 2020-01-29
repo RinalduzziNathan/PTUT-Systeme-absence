@@ -4,17 +4,27 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 class ItemCour extends React.Component {
 
+  constructor(props) {
+    super(props)
+
+    this.navigate = props.navigation
+  }
+   
+
+  _displayNewView = () => {
+    this.navigate.navigate("ScannerCours")
+  }
 
   render() {
     //Objet contenant le cour (prof, matière heure)
     const Cours = this.props.Cour
     return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={this._displayNewView}>
      <View style={styles.main_container}>
 
         <View style={{flexDirection:"column"}}>
           <View style={{marginRight: 40}}>
-            <Image style={styles.image} source={require('../Image/barre_verte.png')} /> 
+            <Image style={styles.image} source={require('../Image/barre_rouge.png')} /> 
           </View>
 
           <View>
@@ -34,7 +44,7 @@ class ItemCour extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 1, height: 90, flexDirection: 'column',/*justifyContent: 'center', alignItems: 'center', flexDirection: 'row',*/
+    flex: 1, height: 90, flexDirection: 'column',
     borderRadius: 2,
     borderWidth: 0.3,
     borderColor: 'white',
