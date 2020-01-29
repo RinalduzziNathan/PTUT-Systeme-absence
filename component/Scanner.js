@@ -58,6 +58,7 @@ class Scanner extends React.Component{
         }
 
         handleBarCodeScanned = ({ type, data }) => {
+          alert(data)
           this.setState({ scanned: true });
         };
 }
