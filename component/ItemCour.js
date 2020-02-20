@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, Text,Image,TouchableOpacity} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
+import Scanner from "../component/Scanner"
 
 class ItemCour extends React.Component {
 
@@ -11,12 +12,12 @@ class ItemCour extends React.Component {
     // this.navigate.navigate("ScannerCour")
   }
 
-
   render() {
     //Objet contenant le cour (prof, matière heure)
     const Cours = this.props.Cour
     const { displayNewView } = this.props.displayNewView
-
+    var couleur_bar = '../Image/barre_rouge.png'
+    
     return (
      <TouchableOpacity onPress={() =>this.props.displayNewView()} >
     
@@ -24,7 +25,7 @@ class ItemCour extends React.Component {
 
         <View style={{flexDirection:"column"}}>
           <View style={{marginRight: 40}}>
-            <Image style={styles.image} source={require('../Image/barre_rouge.png')} /> 
+            <Image style={styles.image} source={require(couleur_bar)} /> 
           </View>
 
           <View>
