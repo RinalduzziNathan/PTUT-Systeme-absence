@@ -42,7 +42,6 @@ class ScanCodeAuthentification extends Scanner{
       sendNotificationImmediately = async () => {
 
 
-        console.log("on entre dans la function")
         let notificationId = await Notifications.presentLocalNotificationAsync({
       
           title: "UCA Absence",
@@ -68,7 +67,6 @@ class ScanCodeAuthentification extends Scanner{
       sendNotificationErreur= async () => {
 
 
-        console.log("on entre dans la function")
         let notificationId = await Notifications.presentLocalNotificationAsync({
           
           title: "UCA Absence",

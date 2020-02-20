@@ -25,7 +25,7 @@ export class ApiAuth{
 
     //post the token to the api, and the api return the user associated to the token
     static GetUserInfo(){
-        const url = "http://ptutgestionabsences.herokuapp.com/get_user_from_token"
+        const url = "http://ptutgestionabsences.herokuapp.com/api/testapi"
 
         fetch(url, {
             method: 'POST',
@@ -34,7 +34,7 @@ export class ApiAuth{
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              token:this.Token              
+              data:"hkggkhg"              
             })
           }).then((response) => console.log("bjr"));
           console.log(this.Token+ " TOKEN !!!")

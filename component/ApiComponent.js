@@ -1,4 +1,4 @@
-import {ApiPTUT,PostApiPTUT} from '../api/TMDBapi.js'
+import {ApiPTUT,} from '../api/TMDBapi.js'
 import React from 'react'
 import { StyleSheet,View, TextInput, Button,FlatList,Text,ActivityIndicator } from 'react-native'
 
@@ -15,18 +15,7 @@ class ApiDialog extends React.Component {
         this.messageToPost = _text;
     }
 
-    _TestApi(){
-        console.log('TEST DE L API EN COUR')
-         ApiPTUT(9).then(data => {
-        console.log(data)
-        })
-        
-      }
-    _TestPostApi(){
-        console.log('TEST DE L API POST EN COUR')
-        PostApiPTUT(this.messageToPost)
-        this.messageToPost=""
-    }
+
       
     render(){
         return (

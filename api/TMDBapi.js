@@ -10,18 +10,19 @@ export function getFilmsFromApiWithSearchedText (text, page) {
 
 
 export function ApiPTUT(id) {
-  const url = 'http://ptutgestionabsences.herokuapp.com/api/a_p_i_tests?page=1'
-  const urlTest = 'http://ptutgestionabsences.herokuapp.com/testjson'
-
+  const url = 'http://ptutgestionabsences.herokuapp.com/api/classrooms/9'
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/api_tests'
   return fetch(urlTest)
-    .then((response) => console.log(response))
+    .then((response) => response.json())
     .catch((error) => console.error(error))
     
 }
 
-export function PostApiPTUT(Message) {
-  const urlTest = 'http://ptutgestionabsences.herokuapp.com/apilogin'
 
+export function PostApiPTUT(id) {
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/api/testapi'
+
+ 
   fetch(urlTest, {
   method: 'POST',
   headers: {
@@ -29,13 +30,14 @@ export function PostApiPTUT(Message) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    username:"krgarnier",
-    roles:role
+    data: 'Test retour au present',
     
-  })
-}).then((response) => console.log(response));
+  }),
+    
+}).then((response) => response.json())
+.then((response) => console.log({response}))
+.catch((error) => console.error(error))
 }
-
 
 export function getImageFromApi (name) {
     return 'https://image.tmdb.org/t/p/w300' + name
