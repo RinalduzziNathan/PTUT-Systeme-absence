@@ -24,7 +24,7 @@ class ItemCour extends React.Component {
 
         <View style={{flexDirection:"column"}}>
           <View style={{marginRight: 40}}>
-            <Image style={styles.image} source={require('../Image/barre_verte.png')} /> 
+            <Image style={styles.image} source={require('../Image/barre_rouge.png')} /> 
           </View>
 
           <View>
@@ -44,7 +44,7 @@ class ItemCour extends React.Component {
 
 const styles = StyleSheet.create({
   main_container: {
-    flex: 1, height: 90, flexDirection: 'column',/*justifyContent: 'center', alignItems: 'center', flexDirection: 'row',*/
+    flex: 1, height: 90, flexDirection: 'column',
     borderRadius: 2,
     borderWidth: 0.3,
     borderColor: 'white',
