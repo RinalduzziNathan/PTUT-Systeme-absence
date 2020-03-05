@@ -59,7 +59,7 @@ class Profil extends React.Component {
     })
     .then((res) => res.json())
     .then((response) =>  this.setState({ nom: response[0].firstname,
-       prenom:response[0].name, loading:true  }))
+       prenom:response[0].name, loading:false  }))
     
     //this.DataUser=response.json())
       .then((response) => console.log(response))
@@ -72,7 +72,7 @@ class Profil extends React.Component {
     return (
       
       <View style={styles.mainContainer}>
-        {this._displayLoading()}
+      
         <View style={styles.first_container}>
           <Image style={styles.image} source={require('../Image/profil.png')} />
           <Text style={{ color: "white", marginTop: 10, fontSize: 20 }}>{this.state.nom+" "+this.state.prenom}</Text>
@@ -113,6 +113,7 @@ class Profil extends React.Component {
             </View>
           </TouchableOpacity>
         </View>
+        {this._displayLoading()}
       </View>
     )
   }
