@@ -1,3 +1,4 @@
+import { AsyncStorage } from "react-native"
 
 //this file contains function and class used for networkings between the mobile app & the server + save the token
 
@@ -15,6 +16,30 @@ export function GetClassroomWithId(GroupId)
 export function Post(params) {
     
 }
+export async function  PostTokenGetDataUser() {
+  
+  const STORAGE_KEY ='@save_token'
+  const data = await AsyncStorage.getItem(STORAGE_KEY)
+  console.log("Token en approche")
+  
+  console.log(data)
+  const urlTest = 'http://ptutgestionabsences.herokuapp.com/get-user-from-token'
+  return fetch(urlTest, {
+  method: 'POST',
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    token: data,
+    
+  }),
+    
+}).then((response) => response.json())
+.then((response) => console.log({response} ))
+.catch((error) => console.error(error))
+}
+
 
 //class with static method for authentification
 export class ApiAuth{

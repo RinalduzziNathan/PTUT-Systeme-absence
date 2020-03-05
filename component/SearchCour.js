@@ -113,14 +113,14 @@ class SearchCour extends React.Component {
      
       return (
         <View style={{flex:1 ,flexDirection:'column'}}>    
-            <Button
+            {/* <Button
             title="Btn post " 
             onPress= {()=> this._TestPostApi()}
             /><Button
             title="Btn get test" 
             onPress= {()=> this._TestGetApi()}
-            />
-            <View style={{backgroundColor: "#316B7F", flex :1,justifyContent: 'center', alignItems: 'center', flexDirection: 'row', opacity: "0.9"}}>    
+            /> */}
+            <View style={{backgroundColor: "#316B7F", flex :1,justifyContent: 'center', alignItems: 'center', flexDirection: 'row', opacity: 0.9}}>    
               <Image style={styles.image} source={require('../Image/logo-uca-.png')} />
               <Text style={{color: "white", fontSize: 20, paddingLeft: 20}} > Liste des cours </Text>
             </View>        
