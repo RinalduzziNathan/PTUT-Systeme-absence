@@ -47,7 +47,7 @@ const StackNavigatorCoursApi = createStackNavigator({
   ScannerCour:{
     screen: Scanner,
     navigationOptions: {
-      title: "ALED"
+      title: "Scannez le QR Code"
     }
   }
 })

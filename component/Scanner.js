@@ -10,10 +10,10 @@ import { ApiAuth } from './Api';
 
 class Scanner extends React.Component{
 
-
     constructor(props){
         super(props);
-      }
+      };
+
       state = {
           hasCameraPermission: null,
           scanned: false,
@@ -58,7 +58,6 @@ class Scanner extends React.Component{
         }
 
         handleBarCodeScanned = ({ type, data }) => {
-          alert(data)
           this.setState({ scanned: true });
         };
 }
