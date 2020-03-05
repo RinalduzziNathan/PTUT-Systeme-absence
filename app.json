@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ExpoExpérimentation",
-    "slug": "expoptut",
+    "name": "PTUT - Système d'absence",
+    "slug": "ptut-absence",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
@@ -26,7 +26,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "",
-    "githubUrl": "https://github.com/RinalduzziNathan/ReactNativeFirstTry"
+    "description": "Application pour le projet tuteuré.",
+    "githubUrl": "https://github.com/RinalduzziNathan/PTUT-Systeme-absence"
   }
 }

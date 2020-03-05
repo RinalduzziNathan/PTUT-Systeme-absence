@@ -59,7 +59,9 @@ class Profil extends React.Component {
     })
     .then((res) => res.json())
     .then((response) =>  this.setState({ nom: response[0].firstname,
-       prenom:response[0].name, loading:false  }))
+       prenom:response[0].name,
+        loading:false,
+      groupe: response[0].classroom_group}))
     
     //this.DataUser=response.json())
       .then((response) => console.log(response))
@@ -103,13 +105,13 @@ class Profil extends React.Component {
           <TouchableOpacity>
             <View style={{ flexDirection: "row", borderRadius: 2, borderWidth: 0.3, borderColor: "grey", backgroundColor: "white", height: 50 }}>
               <Image style={styles.icon} source={require('../Image/date.png')} />
-              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Année d'étude </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} ></Text>
+              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Année d'étude </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >2</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={{ flexDirection: "row", borderRadius: 2, borderWidth: 0.3, borderColor: "grey", backgroundColor: "white", height: 50 }}>
               <Image style={styles.icon} source={require('../Image/groupe.png')} />
-              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Groupe </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >{this.state.classroom_group}</Text>
+              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Groupe </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >{this.state.groupe}</Text>
             </View>
           </TouchableOpacity>
         </View>
