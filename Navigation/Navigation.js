@@ -1,37 +1,16 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator, HeaderTitle } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-import Search from '../component/Search'
+
 import FilmDetail from '../component/FilmDetail'
-import Favorites from '../component/Favorite'
 import ScanCodeAuthentification from '../component/ScanCodeAuthentification'
-import ItemCour from '../component/ItemCour'
 import SearchCour from '../component/SearchCour'
-import ApiDialog from '../component/ApiComponent'
-import Connexion from '../component/Connexion'
 import Scanner from '../component/Scanner'
 import AutoAutenthification from '../component/AutoAuthentification'
 import Profil from '../component/Profil'
 import { StyleSheet,Image } from 'react-native'
 import React from 'react'
 
-
-
-const SearchStackNavigator = createStackNavigator({
-
-  Search: {
-    screen: Search,
-    navigationOptions: {
-      title: "Rechercher"
-    }
-  },
-  FilmDetail:{
-    screen:FilmDetail,
-    navigationOptions: {
-      title: "détaille du film"
-    }
-  },
-})
 
 const StackNavigatorCoursApi = createStackNavigator({
 

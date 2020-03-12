@@ -117,13 +117,13 @@ class Profil extends React.Component {
           <TouchableOpacity>
             <View style={{ flexDirection: "row", borderRadius: 2, borderWidth: 0.3, borderColor: "grey", backgroundColor: "white", height: 50 }}>
               <Image style={styles.icon} source={require('../Image/date.png')} />
-              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Année d'étude </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >2</Text>
+              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Année d'étude </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >{this.state.groupe.charAt(0)}</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={{ flexDirection: "row", borderRadius: 2, borderWidth: 0.3, borderColor: "grey", backgroundColor: "white", height: 50 }}>
               <Image style={styles.icon} source={require('../Image/groupe.png')} />
-              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Groupe </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >{this.state.groupe}</Text>
+              <Text style={{ fontSize: 20, color: "grey", marginLeft: 5, marginTop: 10 }}>Groupe </Text><Text style={{ fontSize: 20, color: "black", fontWeight: "bold", marginTop: 10 }} >{this.state.groupe.slice(1,3)}</Text>
             </View>
           </TouchableOpacity>
         </View>
