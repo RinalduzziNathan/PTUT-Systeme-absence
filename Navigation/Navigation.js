@@ -12,6 +12,9 @@ import Connexion from '../component/Connexion'
 import Scanner from '../component/Scanner'
 import AutoAutenthification from '../component/AutoAuthentification'
 import Profil from '../component/Profil'
+import { StyleSheet,Image } from 'react-native'
+import React from 'react'
+
 
 
 const SearchStackNavigator = createStackNavigator({
@@ -55,13 +58,30 @@ const StackNavigatorCoursApi = createStackNavigator({
 
 const MoviesTabNavigator = createBottomTabNavigator({
   Cours:{
-    screen: StackNavigatorCoursApi
-  },
-  Scanner: {
-    screen: Scanner
+    screen: StackNavigatorCoursApi,
+    navigationOptions: {
+      tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
+        return <Image
+          source={require('../Image/cours.png')}
+          style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+      }
+    }
   },
   Profil:{
-    screen: Profil
+    screen: Profil,
+    navigationOptions: {
+      tabBarIcon: () => { // On définit le rendu de nos icônes par les images récemment ajoutés au projet
+        return <Image
+          source={require('../Image/profil.png')}
+          style={styles.icon}/> // On applique un style pour les redimensionner comme il faut
+      }
+    }
+  }
+})
+const styles = StyleSheet.create({
+  icon: {
+    width: 30,
+    height: 30
   }
 })
 
@@ -77,3 +97,5 @@ export default createAppContainer(
     }
   )
 );
+
+

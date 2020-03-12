@@ -10,6 +10,8 @@ class Profil extends React.Component {
   constructor(props) {
     super(props)
     this.DataUser
+    
+    this.navigate = props.navigation
     this._GetData()
     this.state = { 
       loading:true,
@@ -36,6 +38,16 @@ class Profil extends React.Component {
       )
     }    
 }
+
+  async _DecoToken(){
+    console.log("plus de token")
+    const STORAGE_KEY = '@save_token'
+        
+    AsyncStorage.removeItem(STORAGE_KEY)
+      this.navigate.navigate("Auth")
+    
+
+  }
 
   async _GetData() {
     
@@ -115,6 +127,10 @@ class Profil extends React.Component {
             </View>
           </TouchableOpacity>
         </View>
+        
+        <Button
+            title="Déconnexion" 
+            onPress= {()=> this._DecoToken()}/> 
         {this._displayLoading()}
       </View>
     )
