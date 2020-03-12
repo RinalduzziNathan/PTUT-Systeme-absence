@@ -115,6 +115,7 @@ class ScanCodeAuthentification extends Scanner{
         }
       }
 
+
 }
 
 export default ScanCodeAuthentification;

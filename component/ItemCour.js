@@ -7,11 +7,8 @@ class ItemCour extends React.Component {
 
   onPress = () => {
 
-    console.log(" c'est les props " +this.props)
-
     // this.navigate.navigate("ScannerCour")
   }
-
   render() {
     //Objet contenant le cour (prof, matière heure)
     const Cours = this.props.Cour

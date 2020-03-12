@@ -66,6 +66,34 @@ export class ApiAuth{
 
     }
 
+    static async GetClassRoom(param){
+      const url = "http://ptutgestionabsences.herokuapp.com/remove-user-from-absence"
+    
+      const urltest="http://ptutgestionabsences.herokuapp.com/get-user-classrooms-from-token"
+      const STORAGE_KEY = '@save_token'
+      
+      const data = await AsyncStorage.getItem(STORAGE_KEY)
+      console.log("Token en approche "+data)
+      return fetch(url, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          token: data,
+          classroomid:param
+
+  
+        }),
+  
+      })
+      .then((res) => res.json())
+      .then((response) => console.log(response))
+        .catch((error) => console.error(error))
+        
+    }    
+
     //Store the token
     static StoreToken(Token) 
     {
