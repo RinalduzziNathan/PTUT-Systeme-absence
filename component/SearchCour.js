@@ -109,10 +109,9 @@ class SearchCour extends React.Component {
   async LoadClassroom() {
 
     this.cours = await ApiAuth.GetClassroom()
-    
+    NumberOfCourse = this.cours[0]
     var ApiArray = []
-    
-    for (let i = 0; i < 7; i++) {
+    for (let i = 1; i < NumberOfCourse; i++) {
         ApiArray.push(
           {
             id: this.cours[i][0],
@@ -121,17 +120,11 @@ class SearchCour extends React.Component {
             date:this.cours[i][3]
           },
         )
-     
-       
     }
-    
+    //update le state
     this.setState({
       DATAapi:ApiArray
     })
-    console.log("ARRAY ETAT")
-    console.log(ApiArray)
-
-
   }
 
   _searchTextInputChanged(text) {
