@@ -88,13 +88,15 @@ class SearchCour extends React.Component {
           id: '6',
           title: 'POO1',
           professeur: 'Benjamin Albouy-Kissi',
-          date: '16/01/2020  8h30'
+          date: '16/01/2020  8h30',
+          presence:false
         },
         {
           id: '4',
           title: 'Testc',
           professeur: 'Cursed PTUT',
-          date: '16/01/2020  8h30'
+          date: '16/01/2020  8h30',
+          presence:true
         },
       ],
     }
@@ -117,7 +119,8 @@ class SearchCour extends React.Component {
             id: this.cours[i][0],
             title:this.cours[i][1],
             professeur: this.cours[i][2],
-            date:this.cours[i][3]
+            date:this.cours[i][3],
+            presence:this.cours[i][4]
           },
         )
     }
