@@ -1,7 +1,6 @@
 
 import React from 'react'
 import { StyleSheet, View, TextInput, Button, FlatList, Text, ActivityIndicator, Image } from 'react-native'
-import { ApiPTUT, PostApiPTUT } from '../api/TMDBapi.js'
 import ItemCour from './ItemCour'
 import { LinearGradient } from 'expo-linear-gradient'
 import { ApiAuth } from './Api';
@@ -140,20 +139,6 @@ class SearchCour extends React.Component {
     console.log("LANCER LA NOUVELLE VUE")
     this.props.navigation.navigate("ScannerCour")
   }
-
-  _TestGetApi() {
-    console.log('TEST DE L API GET EN COUR')
-    ApiPTUT().then(data => {
-      console.log(data)
-    })
-
-  }
-  _TestPostApi() {
-    console.log('TEST DE L API POST EN COUR')
-    PostApiPTUT()
-
-  }
-
   render() {
 
     const { displayNewView, data } = this.props

@@ -1,8 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator, HeaderTitle } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
-
-import FilmDetail from '../component/FilmDetail'
 import ScanCodeAuthentification from '../component/ScanCodeAuthentification'
 import SearchCour from '../component/SearchCour'
 import Scanner from '../component/Scanner'
@@ -10,6 +8,7 @@ import AutoAutenthification from '../component/AutoAuthentification'
 import Profil from '../component/Profil'
 import { StyleSheet, Image } from 'react-native'
 import React from 'react'
+
 
 
 const StackNavigatorCoursApi = createStackNavigator({

@@ -6,7 +6,6 @@ import Scanner from "../component/Scanner"
 class ItemCour extends React.Component {
 
   onPress = () => {
-
     // this.navigate.navigate("ScannerCour")
   }
   render() {
