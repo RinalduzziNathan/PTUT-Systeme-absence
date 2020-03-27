@@ -88,7 +88,7 @@ export class ApiAuth {
       .then((response) => console.log(response))
       .catch((error) => console.error(error))
 
-
+      
   }
 
   static async GetClassroom() {

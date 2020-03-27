@@ -5,64 +5,6 @@ import ItemCour from './ItemCour'
 import { LinearGradient } from 'expo-linear-gradient'
 import { ApiAuth } from './Api';
 
-//Array de cours static en attendant l'api
-const DATA = [
-  {
-    id: '1',
-    title: 'Algo2',
-    professeur: 'Eric Zeghers',
-    date: '14/01/2020  16h'
-  },
-  {
-    id: '2',
-    title: 'Web',
-    professeur: 'Kristen Garnier',
-    date: '15/01/2020  8h30'
-  },
-  {
-    id: '3',
-    title: 'POO1',
-    professeur: 'Benjamin Albouy-Kissi',
-    date: '15/01/2020  10h30'
-  },
-  {
-    id: '4',
-    title: 'DAC',
-    professeur: 'Vincent Sauvage',
-    date: '15/01/2020  14h'
-  },
-  {
-    id: '5',
-    title: 'POO3',
-    professeur: 'Antoine Vacavant',
-    date: '15/01/2020  16h'
-  },
-  {
-    id: '6',
-    title: 'POO1',
-    professeur: 'Benjamin Albouy-Kissi',
-    date: '16/01/2020  8h30'
-  },
-  {
-    id: '7',
-    title: 'DAC',
-    professeur: 'Vincent Sauvage',
-    date: '16/01/2020  10h30'
-  },
-  {
-    id: '8',
-    title: 'Anglais',
-    professeur: 'Pascale Pothée',
-    date: '16/01/2020  14h'
-  },
-  {
-    id: '9',
-    title: 'Architecture',
-    professeur: 'Pierre-Yves Bischoff',
-    date: '16/01/2020  16h'
-  }
-];
-
 
 class SearchCour extends React.Component {
 
@@ -98,10 +40,17 @@ class SearchCour extends React.Component {
           presence:true
         },
       ],
+      refreshing: false,
     }
     
   }
 
+  handleRefresh = () => {
+    this.setState({
+      refreshing:true,
+    })
+    this.LoadClassroom()
+  }
 
   componentDidMount() {
     this.LoadClassroom()
@@ -112,7 +61,7 @@ class SearchCour extends React.Component {
     this.cours = await ApiAuth.GetClassroom()
     NumberOfCourse = this.cours[0]
     var ApiArray = []
-    for (let i = 1; i < NumberOfCourse; i++) {
+    for (let i = 1; i < NumberOfCourse+1; i++) {
         ApiArray.push(
           {
             id: this.cours[i][0],
@@ -125,8 +74,10 @@ class SearchCour extends React.Component {
     }
     //update le state
     this.setState({
-      DATAapi:ApiArray
+      DATAapi:ApiArray,
+      refreshing:false,
     })
+
   }
 
   _searchTextInputChanged(text) {
@@ -167,6 +118,8 @@ class SearchCour extends React.Component {
                 <ItemCour Cour={item}
                   displayNewView={this._displayNewView}
                 />}
+              refreshing={this.state.refreshing}
+              onRefresh={this.handleRefresh}
             />
           </LinearGradient>
         </View>

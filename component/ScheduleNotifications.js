@@ -3,8 +3,28 @@ import React from 'react'
 import { Notifications } from 'expo';
 import * as Permissions from 'expo-permissions';
 import ItemCour from './ItemCour'
+import { ApiAuth } from './Api';
 
 class ScheduleNotifications extends React.Component {
+    //fct pout charger les cours dans ApiArray
+
+    async LoadClassroom() {
+
+        this.cours = await ApiAuth.GetClassroom()
+        NumberOfCourse = this.cours[0]
+        var ApiArray = []
+        for (let i = 1; i < NumberOfCourse+1; i++) {
+            ApiArray.push(
+              {
+                id: this.cours[i][0],
+                title:this.cours[i][1],
+                professeur: this.cours[i][2],
+                date:this.cours[i][3],
+                presence:this.cours[i][4]
+              },
+            )
+        }
+    }
 
   onSubmit(e) {
     Keyboard.dismiss();
@@ -15,7 +35,7 @@ class ScheduleNotifications extends React.Component {
     };
 
     const schedulingOptions = {
-        time: (new Date()).getTime() + //RAJOUTER DATE DU COURS
+        time: (new Date()).getTime() + ApiArray[NumberOfCourse].date - 5 //j'ai mis la date du dernier cour, mais je ne sais pas si c'est dans les bons formats
     }
 
     // Notifications show only when app is not active.
