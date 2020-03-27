@@ -9,7 +9,7 @@ class ItemCour extends React.Component {
     // this.navigate.navigate("ScannerCour")
   }
   render() {
-    //Objet contenant le cour (prof, matière heure)
+    //Objet contenant le cours (prof, matière heure)
     const Cours = this.props.Cour
     const { displayNewView } = this.props.displayNewView
     
